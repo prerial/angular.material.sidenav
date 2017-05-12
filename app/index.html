@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMaterialApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <title>Angular Material - Starter App</title>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+  <link rel="stylesheet" href="./jspm_packages/github/angular/bower-material@master/angular-material.css"/>
+  <link rel="stylesheet" href="./assets/app.css"/>
+
+  <!-- Preload is (currently) only used for testing jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <script src="angular-material.min.js"></script>
+  <script src="mymaterialapp.js"></script>
+
+
+</head>
+
+<body ng-cloak layout="column" ng-controller="AppController">
+
+  <!-- Container #1 (see wireframe) -->
+  <md-toolbar layout="row" class="md-toolbar-tools">
+    <md-button class="menu md-icon-button" style="display:block" hide-gt-sm ng-click="toggleList()"
+               aria-label="Show User List">
+      <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
+    <h1>Angular Material - Starter App</h1>
+  </md-toolbar>
+  <section layout="row" flex>
+
+    <md-sidenav class="md-sidenav-left" style="top:70px;z-index:100000" md-component-id="left"
+                md-disable-backdrop md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+      </md-toolbar>
+
+      <md-content layout-margin>
+        <p>
+          This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+        </p>
+        <md-button ng-click="toggleList()" class="md-accent">
+          Close this Sidenav
+        </md-button>
+        <md-list>
+          <md-list-item ng-repeat="user in users">
+            <md-button ng-click="$ctrl.showDetails({user:user})" ng-class="{'selected' : user === selected }">
+              <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
+              {{user.name}}
+            </md-button>
+          </md-list-item>
+        </md-list>
+
+      </md-content>
+
+    </md-sidenav>
+
+    <md-content flex layout-padding>
+
+      <!-- Container #2 -->
+      <div flex layout="row">
+
+        <!-- Container #4 -->
+        <md-content flex id="content">
+          BBBBB
+          <!-- Custom UserDetails component -->
+          <user-details
+                  selected="selected" >
+          </user-details>
+        </md-content>
+
+      </div>
+
+    </md-content>
+
+  </section>
+
+</body>
+</html>
